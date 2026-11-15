@@ -1,5 +1,5 @@
 // 것모닝 시상 룰렛 서비스 워커: 행사장 인터넷이 끊겨도 열리도록 앱 파일과 글꼴을 저장해 둔다
-const VERSION = "gm-award-v2";
+const VERSION = "gm-award-v3";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
