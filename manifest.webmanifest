@@ -1,0 +1,17 @@
+{
+  "name": "것모닝 시상 룰렛",
+  "short_name": "것모닝 시상",
+  "description": "2026 것모닝코리아 팀 챌린지 Dream US 시상 추첨",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#EEFBF1",
+  "theme_color": "#EEFBF1",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
