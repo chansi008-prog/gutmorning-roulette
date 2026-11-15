@@ -73,7 +73,7 @@
 
   .arena { position: relative; display: grid; place-items: center; min-height: 0; container-type: size; }
   @media (max-width: 900px) { .arena { min-height: 520px; } }
-  .wheel-box { position: relative; width: min(100%, 64vh, 640px); width: min(100cqw, 96cqh, 700px); aspect-ratio: 1; }
+  .wheel-box { position: relative; width: min(100%, 64vh, 640px); width: min(100cqw, 96cqh, 700px); aspect-ratio: 1; container-type: inline-size; }
   .wheel-box canvas { width: 100%; height: 100%; display: block; }
   .pointer {
     position: absolute; top: -8px; left: 50%; transform: translateX(-50%); z-index: 2;
@@ -84,12 +84,14 @@
     position: absolute; inset: 0; margin: auto; width: 22%; height: 22%; border-radius: 50%;
     background: #fff; border: 5px solid var(--orange); color: var(--green-deep);
     font: clamp(20px, 2.4vw, 32px) var(--body); cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,.15);
+    font-size: min(6cqi, 34px); border-width: max(3px, .8cqi); padding: 0; line-height: 1; white-space: nowrap;
   }
   .hub:disabled { cursor: default; }
   .callout {
     position: absolute; left: 50%; top: 8%; transform: translateX(-50%); z-index: 3;
     background: var(--orange); color: #fff; padding: 10px 34px; border-radius: 999px;
-    font-size: clamp(34px, 4.4vw, 60px); white-space: nowrap; box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    font-size: clamp(34px, 4.4vw, 60px); font-size: clamp(24px, 9cqi, 64px); padding: .15em .6em; max-width: 96cqi; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; box-shadow: 0 10px 30px rgba(0,0,0,.2);
     animation: pop .4s cubic-bezier(.2,1.5,.4,1);
   }
 
@@ -238,6 +240,27 @@
   .callout { animation-name: pop2; }
   @keyframes pop2 { from { transform: translateX(-50%) scale(.6); opacity: 0; } to { transform: translateX(-50%) scale(1); opacity: 1; } }
   @media (prefers-reduced-motion: reduce) { .callout, .chip.new, .slot .reel.done { animation: none; } }
+
+  /* 높이가 낮은 화면(갤럭시 탭·노트북 가로): 위쪽을 한 줄로 줄이고 원판 자리를 넓힌다 */
+  @media (max-height: 820px) and (min-width: 901px) {
+    .app { gap: 8px; padding-block: 8px; }
+    header { flex-wrap: nowrap; gap: 10px; }
+    .brand { gap: 10px; min-width: 0; }
+    .brand svg { width: 52px; height: 44px; }
+    .brand .wm { height: 26px; margin-bottom: 2px; }
+    .brand .sub { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tools { flex-wrap: nowrap; gap: 6px; }
+    .tools .btn { font-size: 16px; padding: 4px 10px; white-space: nowrap; }
+    .stage, .board { padding: 10px 12px; gap: 6px; border-radius: 22px; }
+    .now { font-size: 18px; } .now b { font-size: 22px; }
+    .seg label { padding: 4px 10px; font-size: 17px; }
+    .go { font-size: 24px; padding: 6px 36px; }
+    .round { font-size: 20px; padding: 6px 12px; } .round small { font-size: 15px; }
+    .prize .pn { font-size: 23px; } .prize .thumb { width: 60px; height: 50px; }
+  }
+  @media (max-height: 820px) and (min-width: 901px) and (max-width: 1200px) {
+    .brand .sub { display: none; }
+  }
 </style>
 
 <canvas id="confetti"></canvas>
